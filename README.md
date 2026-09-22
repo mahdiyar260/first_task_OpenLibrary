@@ -1,18 +1,60 @@
-# OpenLibrary Books Fetcher
+# OpenLibrary Book Fetcher
 
-This Python script fetches 50 books from the **OpenLibrary API**, filters only the books published **after the year 2000**, and saves the result in a CSV file.
+A simple Python project for fetching books from the Open Library API, filtering them, and saving the results as a CSV file.
 
 ## Features
-- Fetch books from the OpenLibrary public API.
-- Filter books by publication year (>2000).
-- Save the output in a CSV file (`books.csv`) with columns: `title`, `author`, `year`.
-- Randomized selection to get different books each time the script runs.
 
-## Requirements
-- Python 3.x
-- `requests` library
+* Fetch a custom number of books
+* Filter books by publication year
+* Save results to CSV
+* Simple and lightweight structure
 
-You can install the `requests` library using pip:
+## Installation
 
 ```bash
 pip install requests
+```
+
+## Usage
+
+```python
+from functions import fetch_books, filter_books, save_to_csv
+
+books = fetch_books(50)
+
+filtered_books = filter_books(
+    books,
+    min_year=2000
+)
+
+save_to_csv(
+    filtered_books,
+    "books.csv"
+)
+```
+
+## Project Structure
+
+```text
+project/
+├── main.py
+├── functions.py
+└── README.md
+```
+
+## API
+
+This project uses the Open Library Search API:
+
+```text
+https://openlibrary.org/search.json
+```
+
+## Output
+
+The generated CSV file contains:
+
+* Title
+* Author
+* Publication Year
+* ISBN
